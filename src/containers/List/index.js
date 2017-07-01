@@ -8,7 +8,7 @@ class List extends Component {
     this.state = {
       data: null
     }
-    this.getList = this.getList.bind(this)
+    this.getList = this.getList.bind(TouchList)
   }
 
   getList () {
@@ -22,7 +22,7 @@ class List extends Component {
     this.getList()
   }
 
-  render() {
+  render () {
     return (
       <div className="list">
         <Draw />
