@@ -4,7 +4,7 @@ import {
   Route
 } from 'react-router-dom'
 
-import App from './containers/App'
+// import App from './containers/App'
 import List from './containers/List'
 import Detail from './containers/Detail'
 
