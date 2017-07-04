@@ -12,7 +12,7 @@ class HomeList extends Component {
     if (!this.props.datalist) return null
     return (
       this.props.datalist.map((item, index) => 
-        <List.Item>
+        <List.Item key={item.id}>
           {item.title}
         </List.Item>
       )
