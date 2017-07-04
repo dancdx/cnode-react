@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Draw from './LeftDraw'
+import LeftDraw from './LeftDraw'
 import './index.css'
 
 import * as api from '../../api/topics'
@@ -33,7 +33,7 @@ class List extends Component {
   render () {
     return (
       <div className="list">
-        <Draw />
+        <LeftDraw datalist={this.state.data} />
       </div>
     );
   }

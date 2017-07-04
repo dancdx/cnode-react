@@ -4,8 +4,9 @@
 import React, { Component } from 'react';
 import { Drawer, List, NavBar } from 'antd-mobile'
 import './index.css'
+import HomeList from './HomeList'
 
-class Draw extends Component {
+class LeftDraw extends Component {
   state = {
     open: false,
     position: 'left',
@@ -44,10 +45,10 @@ class Draw extends Component {
         sidebar={sidebar}
         {...drawerProps}
       >
-        Click upper-left corner icon
+        <HomeList datalist={this.props.datalist} />
       </Drawer>
     </div>);
   }
 }
 
-export default Draw;
+export default LeftDraw;
