@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { List } from 'antd-mobile'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
-import { link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './index.css'
 
 moment.locale('zh-cn')
@@ -35,19 +35,17 @@ class HomeList extends Component {
   renderList () {
     if (!this.props.datalist) return null
     return (
-      this.props.datalist.map((item, index) =>
-        <link to={{pathname:'/detail'}} >
+      this.props.datalist.map((item, index) =>        
         <List.Item key={item.id}>
-          
+          <Link to={{pathname:'/detail'}} >
             <div className='articleTitle'>{item.title}</div>
             <div className='articleMessage'>
               <span className={(item.good || item.top) ? 'changeGreen articleSort' : 'articleSort'}>{this.renderSort({top: item.top, good: item.good, tab: item.tab})}</span>
               <span className='articleAuthorName'>{item.author.loginname}</span>
               <span className='articleTime'>{this.renderTime(item.create_at)}</span>
             </div>
-         
-        </List.Item>
-         </link>
+          </Link>
+        </List.Item>        
       )
     )
   }

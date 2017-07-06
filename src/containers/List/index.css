@@ -19,6 +19,7 @@
 .articleTitle{
   text-overflow: ellipsis;
   overflow: hidden;
+  color: #000;
 }
 .articleMessage{
   overflow: hidden;
@@ -26,15 +27,16 @@
 .articleMessage span{
   font-size: 0.2rem;
   float: left;
+  color: #000;
 }
-.articleSort{
+.articleMessage .articleSort{
   margin-right: 0.1rem;
   padding: 0.05rem 0.1rem;
   background: #dedede;
   border-radius: 8px;
   color: #666;
 }
-.changeGreen{
+.articleMessage .changeGreen{
   color: #fff;
   background: #59af59;
 }
