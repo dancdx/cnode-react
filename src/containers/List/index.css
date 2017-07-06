@@ -10,3 +10,38 @@
   width: 6rem;
   padding: 0;
 }
+.themeSort{
+  padding-left: 0.3rem;
+  min-height: 0.6rem;
+  line-height: 200%;
+  background: #efefef;
+}
+.articleTitle{
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.articleMessage{
+  overflow: hidden;
+}
+.articleMessage span{
+  font-size: 0.2rem;
+  float: left;
+}
+.articleSort{
+  margin-right: 0.1rem;
+  padding: 0.05rem 0.1rem;
+  background: #dedede;
+  border-radius: 8px;
+  color: #666;
+}
+.changeGreen{
+  color: #fff;
+  background: #59af59;
+}
+.articleAuthorName{
+  margin-top: 0.05rem;
+}
+.articleMessage  .articleTime{
+  float: right;
+  color: #666;
+}

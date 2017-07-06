@@ -10,23 +10,29 @@ class LeftDraw extends Component {
   state = {
     open: false,
     position: 'left',
+    title:'全部'
   }
   onOpenChange = (...args) => {
     console.log(args);
     this.setState({ open: !this.state.open });
   }
+  changeSort(obj){
+    this.setState({ title: obj.name})
+    this.onOpenChange()
+    if(this.props.onChangeData){
+      this.props.onChangeData(obj.ename
+      )
+    }
+  }
   render() {
+    const menuArr=[{name:'全部',ename:"all"},{name:'精华',ename:"good"},{name:'分享',ename:"share"},{name:'问答',ename:"ask"},{name:'招聘',ename:"job"}]
     const sidebar = (<List>
-      {[...Array(20).keys()].map((i, index) => {
-        if (index === 0) {
-          return (<List.Item key={index}
-            thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
-            multipleLine
-          >Category</List.Item>);
-        }
-        return (<List.Item key={index}
-          thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
-        >Category{index}</List.Item>);
+      <div className="am-list-item am-list-item-middle">登录</div>
+      <div className="themeSort">板块</div>
+      {menuArr.map((item,index)=>{
+        return (
+          <List.Item key={index} onClick={this.changeSort.bind(this,item)}>{item.name}</List.Item>
+        )
       })}
     </List>);
 
@@ -36,7 +42,7 @@ class LeftDraw extends Component {
       onOpenChange: this.onOpenChange,
     };
     return (<div>
-      <NavBar iconName="ellipsis" onLeftClick={this.onOpenChange}>Basic</NavBar>
+      <NavBar iconName="ellipsis" onLeftClick={this.onOpenChange}>{this.state.title}</NavBar>
       <Drawer
         className="my-drawer"
         style={{ minHeight: document.documentElement.clientHeight - 200 }}
