@@ -1,0 +1,41 @@
+.articleContent{
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  word-break: break-all;
+}
+.articleTitle{
+  font-size: 34px;
+  line-height: 1.5
+}
+.mainArticle img{
+  max-width: 100%;
+}
+.articleAuthorInfo{
+  overflow: hidden;
+}
+.articleAuthorInfo span{
+  float: left;
+}
+.avatar{
+  width: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 8px;
+}
+.avatar img{
+  width: 100%;
+  display: block
+}
+.authorName{
+  color: rgb(0, 134, 241);
+  font-size: 28px;
+}
+.articleAuthorInfo .createTime{
+  float: right;
+  font-size: 28px;
+  color: #666;
+}
+code{
+  white-space: pre-wrap
+}

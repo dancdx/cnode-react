@@ -35,9 +35,9 @@ class HomeList extends Component {
   renderList () {
     if (!this.props.datalist) return null
     return (
-      this.props.datalist.map((item, index) =>        
+      this.props.datalist.map((item, index) =>
         <List.Item key={item.id}>
-          <Link to={{pathname:'/detail'}} >
+          <Link to={{pathname: '/detail', state: {content: item.content, title: item.title, name: item.author.loginname, avatar: item.author.avatar_url, time: this.renderTime(item.create_at)}}} >
             <div className='articleTitle'>{item.title}</div>
             <div className='articleMessage'>
               <span className={(item.good || item.top) ? 'changeGreen articleSort' : 'articleSort'}>{this.renderSort({top: item.top, good: item.good, tab: item.tab})}</span>
@@ -45,7 +45,7 @@ class HomeList extends Component {
               <span className='articleTime'>{this.renderTime(item.create_at)}</span>
             </div>
           </Link>
-        </List.Item>        
+        </List.Item>
       )
     )
   }
