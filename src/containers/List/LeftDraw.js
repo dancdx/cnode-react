@@ -10,14 +10,14 @@ class LeftDraw extends Component {
   state = {
     open: false,
     position: 'left',
-    title:'全部'
+    title:{name:'全部',ename:"all"}
   }
   onOpenChange = (...args) => {
     console.log(args);
     this.setState({ open: !this.state.open });
   }
   changeSort(obj){
-    this.setState({ title: obj.name})
+    this.setState({ title: obj})
     this.onOpenChange()
     if(this.props.onChangeData){
       this.props.onChangeData(obj.ename
@@ -42,7 +42,7 @@ class LeftDraw extends Component {
       onOpenChange: this.onOpenChange,
     };
     return (<div>
-      <NavBar iconName="ellipsis" onLeftClick={this.onOpenChange}>{this.state.title}</NavBar>
+      <NavBar iconName="ellipsis" onLeftClick={this.onOpenChange}>{this.state.title.name}</NavBar>
       <Drawer
         className="my-drawer"
         style={{ minHeight: document.documentElement.clientHeight - 200 }}
@@ -51,7 +51,7 @@ class LeftDraw extends Component {
         sidebar={sidebar}
         {...drawerProps}
       >
-        <HomeList datalist={this.props.datalist} />
+        <HomeList datalist={this.props.datalist} sort={this.state.title.ename}/>
       </Drawer>
     </div>);
   }

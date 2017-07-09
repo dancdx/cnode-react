@@ -18,7 +18,7 @@ class List extends Component {
   async getList (obj) {
     const data = await api.getTopics({
       page: 1,
-      tab: 'all',
+      tab: this.props.location.state.tab || 'all',
       limit: 10,
       ...obj
     })
@@ -35,6 +35,7 @@ class List extends Component {
 
   componentDidMount () {
     this.getList()
+    console.log(this.props)
   }
 
   render () {

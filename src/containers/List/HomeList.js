@@ -37,7 +37,7 @@ class HomeList extends Component {
     return (
       this.props.datalist.map((item, index) =>
         <List.Item key={item.id}>
-          <Link to={{pathname: '/detail', state: {content: item.content, title: item.title, name: item.author.loginname, avatar: item.author.avatar_url, time: this.renderTime(item.create_at)}}} >
+          <Link to={{pathname: '/detail', state: {content: item.content, title: item.title, name: item.author.loginname, avatar: item.author.avatar_url, time: this.renderTime(item.create_at),tab:this.props.sort}}} >
             <div className='articleTitle'>{item.title}</div>
             <div className='articleMessage'>
               <span className={(item.good || item.top) ? 'changeGreen articleSort' : 'articleSort'}>{this.renderSort({top: item.top, good: item.good, tab: item.tab})}</span>
