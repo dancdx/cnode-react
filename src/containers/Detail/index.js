@@ -3,9 +3,7 @@ import { NavBar } from 'antd-mobile'
 import './index.css'
 
 class Detail extends Component {
-  constructor () {
-    super()
-  }
+  
   componentDidMount(){
     console.log(this.props)
   }

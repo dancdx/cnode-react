@@ -1,25 +1,44 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import { Toast } from 'antd-mobile'
 import './index.css'
 
 import * as api from '../../api/user'
 
 class User extends Component{
-  returnList(){
+
+  constructor () {
+    super()
+    this.state = {
+      accesstoken: ''
+    }
+
+    this.returnList = this.returnList.bind(this)
+    this.login = this.login.bind(this)
+    this.setAccessToken = this.setAccessToken.bind(this)
+  }
+
+  returnList () {
     console.log(this.props)
     this.props.history.push('/list',{tab: this.props.location.state.tab})
   }
-  async login(){ 
-  try {
-    const data= await api.login({
-      accesstoken:this.input.value
-    })
-    console.log(data)
-  } catch (e) {
-    //错误处理
-    alert('错误的accessToken')
+
+  async login () { 
+    try {
+      const data= await api.login({
+        accesstoken: this.input.value
+      })
+      console.log(data)
+    } catch (e) {
+      Toast.info('错误的accessToken')
+    }
   }
-}
+
+  setAccessToken (e) {
+    const { name, value } = e.target
+    this.setState({ [name]: value })
+  }
+
   render(){
     return(
       <div className='wrap'>
@@ -27,7 +46,13 @@ class User extends Component{
             &larr;<span>返回</span>
         </div>
         <div className='inputBox'>
-          <input type="text" placeholder='Access Token:' ref={(input)=>{this.input=input}}/>
+          <input 
+            type="text" 
+            placeholder='Access Token:' 
+            name='accesstoken' 
+            value={this.state.accesstoken} 
+            onChange={this.setAccessToken} 
+          />
           <button onClick={this.login.bind(this)}>登录</button>
         </div>
       </div>

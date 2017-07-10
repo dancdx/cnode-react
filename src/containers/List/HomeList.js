@@ -25,6 +25,8 @@ class HomeList extends Component {
           return '问答'
         case 'job':
           return '招聘'
+        default:
+          return '全部'
       }
     }
   }

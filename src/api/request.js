@@ -39,7 +39,10 @@ request.get = async (options) => {
 request.post = async (options) => {
   const data = await request(options.url, {
     method: 'post',
-    body: qs.stringify(options.param)
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(options.param)
   })
   if (data.success) return data.data
   else throw new Error('接口异常: success => false')
