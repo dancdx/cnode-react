@@ -3,14 +3,15 @@
 **/ 
 import React, { Component } from 'react';
 import { Drawer, List, NavBar } from 'antd-mobile'
-import './index.css'
 import HomeList from './HomeList'
+import { Link } from 'react-router-dom'
+import './index.css'
 
 class LeftDraw extends Component {
   state = {
     open: false,
     position: 'left',
-    title:{name:'全部',ename:"all"}
+    title:this.props.title
   }
   onOpenChange = (...args) => {
     console.log(args);
@@ -27,7 +28,9 @@ class LeftDraw extends Component {
   render() {
     const menuArr=[{name:'全部',ename:"all"},{name:'精华',ename:"good"},{name:'分享',ename:"share"},{name:'问答',ename:"ask"},{name:'招聘',ename:"job"}]
     const sidebar = (<List>
-      <div className="am-list-item am-list-item-middle">登录</div>
+    <Link to={{pathname: '/user', state: {tab:this.state.title}}} >
+      <div className="am-list-item am-list-item-middle" >登录</div>
+      </Link>
       <div className="themeSort">板块</div>
       {menuArr.map((item,index)=>{
         return (
@@ -51,7 +54,7 @@ class LeftDraw extends Component {
         sidebar={sidebar}
         {...drawerProps}
       >
-        <HomeList datalist={this.props.datalist} sort={this.state.title.ename}/>
+        <HomeList datalist={this.props.datalist} sort={this.state.title}/>
       </Drawer>
     </div>);
   }

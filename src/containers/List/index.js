@@ -18,7 +18,7 @@ class List extends Component {
   async getList (obj) {
     const data = await api.getTopics({
       page: 1,
-      tab: this.props.location.state.tab || 'all',
+      tab: this.props.location.state ? this.props.location.state.tab.ename: 'all',
       limit: 10,
       ...obj
     })
@@ -41,7 +41,7 @@ class List extends Component {
   render () {
     return (
       <div className="list">
-        <LeftDraw datalist={this.state.data} onChangeData={this.changeData}/>
+        <LeftDraw datalist={this.state.data} onChangeData={this.changeData} title={this.props.location.state ? this.props.location.state.tab:{name:'全部',ename:"all"}}/>
       </div>
     )
   }

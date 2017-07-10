@@ -10,7 +10,6 @@ class Detail extends Component {
     console.log(this.props)
   }
   onReturn () {
-    // window.history.go(-1)
     console.log(this.props)
     this.props.history.push('/', {tab: this.props.location.state.tab})
   }
