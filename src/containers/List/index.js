@@ -12,6 +12,7 @@ class List extends Component {
     }
     this.getList = this.getList.bind(this)
     this.changeData=this.changeData.bind(this)
+    this.getLoginInfo=this.getLoginInfo.bind(this)
   }
 
   // 获取主题列表
@@ -37,11 +38,19 @@ class List extends Component {
     this.getList()
     console.log(this.props)
   }
+  getLoginInfo(){
+    if(this.props.location.state){
+      if(this.props.location.state.accesstoken){
+        return this.props.location.state
+      }
+    }
+    return null
+  }
 
   render () {
     return (
       <div className="list">
-        <LeftDraw datalist={this.state.data} onChangeData={this.changeData} title={this.props.location.state ? this.props.location.state.tab:{name:'全部',ename:"all"}}/>
+        <LeftDraw datalist={this.state.data} onChangeData={this.changeData} title={this.props.location.state ? this.props.location.state.tab:{name:'全部',ename:"all"}} loginInfo={this.getLoginInfo()}/>
       </div>
     )
   }

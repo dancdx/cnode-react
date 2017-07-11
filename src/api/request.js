@@ -44,7 +44,13 @@ request.post = async (options) => {
     },
     body: JSON.stringify(options.param)
   })
-  if (data.success) return data.data
+  if (data.success){
+    if(data.data){
+      return data.data
+    }else{
+      return data
+    }
+  } 
   else throw new Error('接口异常: success => false')
 }
 

@@ -24,13 +24,21 @@ class User extends Component{
   }
 
   async login () { 
-    try {
-      const data= await api.login({
-        accesstoken: this.input.value
-      })
-      console.log(data)
-    } catch (e) {
-      Toast.info('错误的accessToken')
+    if(this.state.accesstoken){
+      try {
+        const data= await api.login({
+          accesstoken: this.state.accesstoken
+        })
+        if(data.success){
+          this.props.history.push('/list',{tab: this.props.location.state.tab,accesstoken:this.state.accesstoken,loginInfo:data}
+          )
+        }
+        
+      } catch (e) {
+        Toast.info('错误的accessToken')
+      }
+    }else{
+      Toast.info('请填写accessToken')
     }
   }
 

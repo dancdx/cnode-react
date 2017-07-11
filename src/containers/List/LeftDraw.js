@@ -8,11 +8,16 @@ import { Link } from 'react-router-dom'
 import './index.css'
 
 class LeftDraw extends Component {
-  state = {
-    open: false,
-    position: 'left',
-    title:this.props.title
+  constructor(props){
+    super(props)
+    this.renderLoginPart=this.renderLoginPart.bind(this)
+    this.state={
+      open: false,
+      position: 'left',
+      title:this.props.title
+    }
   }
+
   onOpenChange = (...args) => {
     console.log(args);
     this.setState({ open: !this.state.open });
@@ -25,12 +30,33 @@ class LeftDraw extends Component {
       )
     }
   }
+  renderLoginPart(){
+    console.log(this.props.loginInfo)
+    if(this.props.loginInfo){      
+      return(
+        <div>
+          <Link to={{pathname: '/user', state: {tab:this.state.title}}} >
+          <div className="am-list-item am-list-item-middle am-list-line" >{this.props.loginInfo.loginInfo.loginname}</div>
+          </Link>
+          <Link to={{pathname: '/user', state: {tab:this.state.title}}} >
+          <div className="am-list-item am-list-item-middle" >我的消息</div>
+          </Link>
+        </div>
+      )      
+    }
+    return (
+      <div>
+        <Link to={{pathname: '/user', state: {tab:this.state.title}}} >
+          <div className="am-list-item am-list-item-middle " >登录</div>
+        </Link>
+      </div>
+    )
+    
+  }
   render() {
     const menuArr=[{name:'全部',ename:"all"},{name:'精华',ename:"good"},{name:'分享',ename:"share"},{name:'问答',ename:"ask"},{name:'招聘',ename:"job"}]
     const sidebar = (<List>
-    <Link to={{pathname: '/user', state: {tab:this.state.title}}} >
-      <div className="am-list-item am-list-item-middle" >登录</div>
-      </Link>
+      {this.renderLoginPart()}
       <div className="themeSort">板块</div>
       {menuArr.map((item,index)=>{
         return (
